@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import GoodsList from './../views/goodsList.vue'
-import Title from '@/views/title.vue'
-import Image from '@/views/image.vue'
+// import Title from '@/views/title.vue'
+// import Image from '@/views/image.vue'
 import Cart from '@/views/cart.vue'
 
 Vue.use(Router)
@@ -13,22 +13,10 @@ export default new Router({
     {
       path: '/goods',
       name: 'GoodsList',
-      component: GoodsList,
-      children: [
-        {
-          path: 'title',
-          name: 'title',
-          component: Title
-        },
-        {
-          path: 'image',
-          name: 'image',
-          component: Image
-        }
-      ]
+      component: GoodsList
     },
     {
-      path: '/cart',
+      path: '/cart/:cartId',
       name: 'cart',
       component: Cart
     }
