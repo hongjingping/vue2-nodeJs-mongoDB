@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <Counter :num = "num"></Counter>
-    <p>parent: {{ num }}</p>
+    <Counter :num = "num" v-on:incre = "increase" v-on:decre = "decrement"></Counter>
+    <p>parent:{{ num }}</p>
   </div>
 </template>
 
@@ -18,6 +18,14 @@ export default {
   },
   components: {
     Counter: Counter
+  },
+  methods: {
+    increase () {
+      this.num++
+    },
+    decrement () {
+      this.num--
+    }
   }
 }
 </script>

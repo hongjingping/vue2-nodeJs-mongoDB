@@ -16,11 +16,11 @@ export default {
   },
   methods: {
     increase (myNum) {
-      let _this = this
-      _this.myNum++
+      // 子组件传父组件
+      this.$emit('incre')
     },
     decrement (myNum) {
-      this.myNum--
+      this.$emit('decre')
     }
   }
 }
