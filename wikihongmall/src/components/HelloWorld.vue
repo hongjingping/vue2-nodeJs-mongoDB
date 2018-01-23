@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <Counter :num = "num"></Counter>
+    <p>parent: {{ num }}</p>
   </div>
 </template>
 
