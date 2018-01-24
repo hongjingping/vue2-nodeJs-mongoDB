@@ -15,6 +15,7 @@
     <a href="javascript:;" class="btn btn-primary" @click="get">Get请求</a>
     <a href="javascript:;" class="btn btn-primary" @click="post">Post请求</a>
     <a href="javascript:;" class="btn btn-primary" @click="jsonp">JSONP请求</a>
+    <a href="javascript:;" class="btn btn-primary" @click="http">http请求</a>
     <div>
       {{ msg }}
     </div>
@@ -70,6 +71,23 @@
         jsonp () {
           this.$http.jsonp('wss://visitlog.imooc.com/').then(res => {
             console.log(res)
+          })
+        },
+        http () {
+          this.$http({
+            url: 'package.json',
+            params: {
+              userId: '1108'
+            },
+            headers: {
+              token: '1108'
+            },
+            timeout: 5000,
+            before: function () {
+              console.log('before init.')
+            }
+          }).then(res => {
+            this.msg = res.data;
           })
         }
       }
