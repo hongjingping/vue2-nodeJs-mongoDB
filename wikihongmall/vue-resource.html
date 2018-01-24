@@ -25,6 +25,20 @@
       data: {
         msg: ''
       },
+      mounted () {
+        // 全局拦截器
+        Vue.http.interceptors.push( (request, next) => {
+          console.log('request init.')
+          next( response => {
+            console.log('response init.')
+            return response
+          })
+        })
+      },
+      http: {
+        // 全局路径配置
+        root: 'http://169.254.43.166:8080/'
+      },
       methods: {
         get () {
           this.$http.get("package.json", {
