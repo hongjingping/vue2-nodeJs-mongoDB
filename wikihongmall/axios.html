@@ -25,7 +25,18 @@
       data: {
         msg: ''
       },
+      // 全局配置
       mounted () {
+        // 请求前拦截
+        axios.interceptors.request.use( config => {
+          console.log('request init .')
+          return config
+        })
+        // 请求后拦截
+        axios.interceptors.response.use( response => {
+          console.log('response init .')
+          return response
+        })
       },
       methods: {
         get () {
@@ -61,8 +72,12 @@
           axios({
             url: '../wikihongmall/package.json',
             method: 'get',
+            // method: 'post',
             data: {
               userId: 'wikiHong'
+            },
+            params: {
+              userId: 'wikiHong2'
             },
             headers: {
               token: '1108'
