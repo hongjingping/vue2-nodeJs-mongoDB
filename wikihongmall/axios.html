@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.css">
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script src="../node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+  <div id="app" class="container">
+    <h1>axios插件讲解</h1>
+    <a href="javascript:;" class="btn btn-primary" @click="get">Get请求</a>
+    <a href="javascript:;" class="btn btn-primary" @click="post">Post请求</a>
+    <a href="javascript:;" class="btn btn-primary" @click="http">http请求</a>
+    <div>
+      {{ msg }}
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        msg: ''
+      },
+      mounted () {
+      },
+      methods: {
+        get () {
+          axios.get('../wikihongmall/package.json',{
+            params: {
+              userId: '19901108'
+            },
+            headers: {
+              token: 'wikiHong'
+            }
+          }).then(res => {
+            this.msg = res.data;
+          }).catch(err => {
+            this.msg = err
+          })
+        },
+        post () {
+          axios.post('../wikihongmall/package.json', {
+            userId: 'wikiHong'
+          }, {
+            headers: {
+              token: '1108'
+            }
+          }).then(res => {
+            this.msg = res.data
+            console.log(res.data)
+          }).catch(err => {
+            this.msg = err
+            consoel.log(err)
+          })
+        },
+        http () {
+          axios({
+            url: '../wikihongmall/package.json',
+            method: 'get',
+            data: {
+              userId: 'wikiHong'
+            },
+            headers: {
+              token: '1108'
+            }
+          }).then(res => {
+            this.msg = res.data
+          }).catch(err => {
+            this.msg = err
+          })
+        }
+      }
+    })
+  </script>
+</body>
+</html>
