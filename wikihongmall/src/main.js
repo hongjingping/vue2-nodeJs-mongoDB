@@ -3,6 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import {sum, minus} from './util.js'
+import * as util from './util.js'
+
+console.log(`sum: ${sum(2, 4)}`)
+console.log(`sum: ${util.sum(1, 3)}`)
+console.log(`minus: ${minus(2, 4)}`)
+console.log(`minus: ${util.minus(1, 3)}`)
 
 Vue.config.productionTip = false
 

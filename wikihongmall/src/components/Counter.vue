@@ -17,7 +17,9 @@ export default {
   methods: {
     increase (myNum) {
       // 子组件传父组件
-      this.$emit('incre')
+      this.$emit('incre');
+      // 异步请求js文件
+      import('./../util.js');
     },
     decrement (myNum) {
       this.$emit('decre')
