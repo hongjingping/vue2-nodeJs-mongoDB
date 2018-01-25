@@ -1,3 +1,4 @@
+// 导出方法
 export let sum = (x, y) => {
   return x + y
 }
