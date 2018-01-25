@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES-2demo演示</title>
+</head>
+<body>
+  <h2>ES-2demo演示</h2>
+  <script>
+    function sum(x, y, z) {
+      let total = 0;
+      if ( x ) total += x;
+      if ( y ) total += y;
+      if ( z ) total += z;
+      console.log(`total : ${total}`);
+    }
+    sum(5, '', 10);
+
+    // rest参数
+    function sum2( ...m ) {
+      let total2 = 0;
+      for ( var i of m ) {
+        total2 += i;
+      }
+      console.log(`total2 : ${total2}`);
+    }
+    sum2(1,2,3);
+
+    let sum3 = (...m) => {
+      let total3 = 0;
+      for ( var i of m ) {
+        total3 += i;
+      }
+      console.log(`total3 : ${total3}`);
+    };
+    sum3(2,2,2)
+
+    // `...`和函数一起的话，就是函数的扩展
+    var [x, y, z] = [4, 6, 8];
+    console.log(...[4,6,8]);
+
+    // 数组的扩展
+    let arr1 = [1,3];
+    let arr2 = [2,4];
+    console.log('concat:' + arr1.concat(arr2)); //合并
+    [...arr1, ...arr2]; 
+
+    // 动态的，容纳很多的参数
+    var [m, ...n] = [4, 8, 10, 30];
+    console.log(n);
+
+    // 字符串结构
+    let h = 'ES6';
+    let [j, p, f] = 'ES6';
+
+    // 字符串扩展
+    var jp = [...'ES6'];
+    console.log(`jp: ${jp}`);
+    
+  </script>
+</body>
+</html>
