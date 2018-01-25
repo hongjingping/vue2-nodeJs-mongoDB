@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ES6demo演示</title>
+  <style>
+    .log {
+      background: black;
+      color: white;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>demo演示</h2>
+  <div id="log" class="log"></div>
+  <script>
+    var str = `
+    console.log('a:' + a); // a:undefined, var声明的变量，有变量提升，是函数级的作用域
+    var a = 1;
+    console.log('b:' + b); // b is not defined, let和const是块级作用域，没有变量提升的功能
+    let b = 2;
+    function user () {
+      var c = 1;
+    }
+    console.log('c'+ c); //  c is not defined, var是函数级的作用域
+    var d = 1;
+    console.log('d' + d);
+
+    // 块级作用域(let和const) 函数级作用域(var)
+    {
+      let e = 1
+      var f = 2
+    }
+    console.log('e'+ e); // e is not defined
+    console.log('f'+ f);
+
+    // var声明的变量，会有一些内存泄露 ，let声明的变量，不会内存泄露，const一般是声明常量，一般不去该
+    let g = 1;
+    g = 2;
+    const h = 1;
+    h = 2; // Assignment to constant variable.
+
+    // const定义常量，开辟了新的内存空间，定义成object类型，专门存放b，内存地址不能改变，里面的值可以改变的
+    const b = {
+      a : 1
+    }
+    b.a = 2;
+    b = { c : 1}; //报错，不能被修改
+
+    // 默认参数
+    function add(flag) {
+      if (flag) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    console.log(add()); // false
+    function addTwo(flag = true) {
+      if (flag) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    console.log(addTwo()); //true
+    function num (num1, num2 = 3) {
+      return num1 + num2;
+    }
+    console.log(num(7));
+
+    // 箭头函数
+    var arr = [3, 6, 9];
+    var newArr = arr.map(function (itrm) {
+      return itrm+2
+    });
+    console.log(newArr);
+    var newArr1 =arr.map((item) => {
+      return item + 2
+    })
+    console.log(newArr1);
+    `
+    printLog(str);
+
+    let userName = 'wikiHong';
+    printLog(`I am ${userName}`);
+
+    // 数组结构(分解和拆分)
+    var [a, b, c] = [1, 0, 8];
+    var [a, b] = [1, 0, 8];
+
+    // 字符串结构(对字符串的分解)
+    var [x, y, z] = "Vue";
+    console.log(`x+${x} + y+${y} + z+${z}`); //x+V + y+u + z+e
+
+    // 对象的结构(对key进行拆分)
+    var {m,n} = {m:10, n:20};
+    console.log(`m+${m} + n+${n}`);  // m+10 + n+20
+
+    // 函数的结构
+    function sum([x, y]) {
+      return x+y;
+    }
+    var total = sum([2,8]);
+    console.log(`total + ${total}`);
+
+    function printLog(str) {
+      document.getElementById('log').innerText += str;
+    }
+  </script>
+</body>
+</html>
